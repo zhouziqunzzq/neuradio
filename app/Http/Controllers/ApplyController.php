@@ -80,4 +80,13 @@ class ApplyController extends Controller
         else
             return redirect('/auth/login');
     }
+
+    /*
+    * 管理员注销
+    */
+    public function adminLogout(Request $request)
+    {
+        Auth::logout();
+        return redirect('/auth/login');
+    }
 }

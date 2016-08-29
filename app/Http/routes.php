@@ -20,7 +20,7 @@ Route::get('/', function () {
 // 认证路由...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
+Route::get('auth/logout', 'ApplyController@adminLogout');
 
 // 注册路由...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
