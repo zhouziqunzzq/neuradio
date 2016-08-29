@@ -1,46 +1,16 @@
-
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
-
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5</div>
-            </div>
-        </div>
-    </body>
-</html>
+@extends('layouts.app')
+@section('title','欢迎加入东大之声')
+@section('content')
+    <style>
+        .myjumbo{
+            padding:5%;
+        }
+    </style>
+    <div class="jumbotron myjumbo">
+        <h1 class="text-center">欢迎加入东大之声</h1>
+        <img src="{{ URL::asset('img/icon.png') }}" class="img-responsive center-block" alt="Responsive image">
+        <br/>
+        <h4 class="text-right">聚焦天下万事，臧否校园点滴。</h4>
+        <p><a class="btn btn-primary btn-lg btn-block" href="/apply" role="button">立即报名</a></p>
+    </div>
+@endsection

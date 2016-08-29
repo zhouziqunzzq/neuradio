@@ -1,13 +1,16 @@
 @extends('layouts.app')
 @section('title','未授权的访问')
 @section('content')
-    <style>
-        .myalert{
-            padding:10px;
-            margin:100px;
-        }
-    </style>
-    <div class=myalert alert-danger text-center">
-        <h1>啊哦，访问未授权，请重试QAQ</h1>
+    <div class="container">
+        <br/><br/>
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h3 class="panel-title">访问未授权</h3>
+            </div>
+            <div class="panel-body">
+                <p>未授权的访问。</p>
+                <button class="btn btn-primary" onclick="history.go(-1)">返回</button>
+            </div>
+        </div>
     </div>
 @endsection

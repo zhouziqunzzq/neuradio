@@ -10,6 +10,9 @@
         <div class="text-center">
             <h1>申请列表</h1>
         </div>
+        <div class="text-right">
+            <a href="/auth/logout">注销</a>
+        </div>
         <div class="table-responsive">
             <table class="table table-bordered table-striped">
                 <tr>

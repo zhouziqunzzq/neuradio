@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
 use App\Student;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -63,6 +64,9 @@ class ApplyController extends Controller
      */
     public function showApply(Request $request)
     {
-        return response()->view('admin.list',['students' => Student::all()]);
+        if(Auth::check())
+            return response()->view('admin.list',['students' => Student::all()]);
+        else
+            return response()->view('errors.unauthorized');
     }
 }

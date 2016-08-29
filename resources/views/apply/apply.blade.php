@@ -15,7 +15,7 @@
             </div>
         @endif
         <form class="form-horizontal" action="/validate_apply" method="post">
-            {{ csrf_field() }}
+            {!! csrf_field() !!}
             <div class="form-group">
                 <label for="inputName" class="col-sm-2 control-label">姓名</label>
                 <div class="col-sm-10">
