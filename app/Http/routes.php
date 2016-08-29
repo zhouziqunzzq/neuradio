@@ -10,13 +10,11 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+/*
+ * 主页欢迎页面
+ */
 Route::get('/', function () {
     return view('welcome');
-});
-
-Route::get('/index', function () {
-    return view('index');
 });
 
 // 认证路由...
