@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','注册')
+@section('title','登陆')
 @section('content')
     <div class="container">
         <div class="row">
