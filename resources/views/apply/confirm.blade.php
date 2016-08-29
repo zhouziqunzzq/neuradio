@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row text-center">
-            <h1>请核对检查下列信息</h1>
+            <h1>请核对下列信息</h1>
         </div>
         <form class="form-horizontal" action="/save_apply" method="post">
             {{ csrf_field() }}
