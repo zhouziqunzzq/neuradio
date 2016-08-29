@@ -14,3 +14,28 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/index', function () {
+    return view('index');
+});
+
+// 认证路由...
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+// 注册路由...
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+//招新报名路由
+Route::get('/apply', function () {
+   return view('apply.apply');
+});
+Route::get('/show_apply','ApplyController@index');
+Route::post('/validate_apply','ApplyController@validateApply');
+Route::post('/save_apply','ApplyController@confirm');
+Route::get('/admin/list','ApplyController@showApply');
+Route::get('/success',function () {
+    return view('apply.success');
+});
