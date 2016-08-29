@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Auth;
 use App\Student;
+use Storage;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -30,10 +31,19 @@ class ApplyController extends Controller
             'inputStunum' => 'required|digits_between:8,10',
             'inputTel' => 'required|digits:11',
             'inputEmail' => 'required|email',
+            'photoFile' => 'required|image',
             'genderRadioOptions' => 'required',
             'applicant1' => 'required',
         ]);
-        return response()->view('apply.confirm')->withCookie('validate','true');
+        $photo = $request->file('photoFile');
+        $newFileName = '';
+        if($photo->isValid())
+        {
+            $newFileName = $request->input('inputStunum');
+            $savePath = 'tmp/'.$newFileName;
+            Storage::put($savePath,file_get_contents($photo->getRealPath()));
+        }
+        return response()->view('apply.confirm')->withCookie('validate','true',5);
     }
 
     /*
@@ -56,6 +66,8 @@ class ApplyController extends Controller
         $student->applicant3 = $request->input('applicant3');
         $student->applicant4 = $request->input('applicant4');
         $student->save();
+        //移动图片到永久文件夹
+        Storage::move('tmp/'.$request->input('inputStunum'), 'photos/'.$request->input('inputStunum'));
         return response()->view('apply.success');
     }
 
@@ -88,5 +100,27 @@ class ApplyController extends Controller
     {
         Auth::logout();
         return redirect('/auth/login');
+    }
+
+    /*
+     * 显示临时图片
+     */
+    public function showTmpPhoto(Request $request, $photoFile)
+    {
+        $file = Storage::get('tmp/'.$photoFile);
+        return response($file, 200)
+            ->header('Content-Type', Storage::mimeType('tmp/'.$photoFile));
+    }
+
+    /*
+     * 显示永久图片
+     */
+    public function showPhoto(Request $request, $photoFile)
+    {
+        if(!Auth::check())
+            return view('errors.unauthorized');
+        $file = Storage::get('photos/'.$photoFile);
+        return response($file, 200)
+            ->header('Content-Type', Storage::mimeType('photos/'.$photoFile));
     }
 }

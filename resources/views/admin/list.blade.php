@@ -25,6 +25,7 @@
                     <td>第二志愿</td>
                     <td>第三志愿</td>
                     <td>第四志愿</td>
+                    <td>照片</td>
                 </tr>
                 @foreach($students as $student)
                     <tr>
@@ -41,6 +42,7 @@
                         <td>{{ $student->applicant2 }}</td>
                         <td>{{ $student->applicant3 }}</td>
                         <td>{{ $student->applicant4 }}</td>
+                        <td><a href="/photo/{{ $student->stunum }}" target="_blank">查看照片</a> </td>
                     </tr>
                 @endforeach
             </table>

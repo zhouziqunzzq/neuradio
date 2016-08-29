@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','信息确认')
+@section('title','信息填写')
 @section('content')
     <div class="container">
         <div class="row text-center">
@@ -14,7 +14,7 @@
                 </ul>
             </div>
         @endif
-        <form class="form-horizontal" action="/validate_apply" method="post">
+        <form class="form-horizontal" action="/validate_apply" method="post" enctype="multipart/form-data">
             {!! csrf_field() !!}
             <div class="form-group">
                 <label for="inputName" class="col-sm-2 control-label">姓名</label>
@@ -57,6 +57,13 @@
                                @endif
                         > 女
                     </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="photoFile" class="col-sm-2 control-label">上传一张靓照</label>
+                <div class="col-sm-10">
+                    <input required type="file" id="photoFile" name="photoFile">
+                    <p class="help-block">请选择一张照片...</p>
                 </div>
             </div>
             <div class="form-group">

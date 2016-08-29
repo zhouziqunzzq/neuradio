@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','欢迎加入东大之声')
+@section('title','信息确认')
 @section('content')
     <div class="container">
         <div class="row text-center">
@@ -41,6 +41,12 @@
                                value="女"
                            @endif
                     >
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2 control-label">照片</label>
+                <div class="col-sm-10">
+                    <img src="{{ '/tmpphoto/'.old('inputStunum') }}" alt="你的照片" class="img-responsive" />
                 </div>
             </div>
             <div class="form-group">
