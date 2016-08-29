@@ -69,4 +69,15 @@ class ApplyController extends Controller
         else
             return response()->view('errors.unauthorized');
     }
+
+    /*
+    * 管理员登录
+    */
+    public function adminLogin(Request $request)
+    {
+        if(Auth::check())
+            return redirect('/admin/list');
+        else
+            return redirect('/auth/login');
+    }
 }

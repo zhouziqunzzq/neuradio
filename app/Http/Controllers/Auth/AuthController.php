@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Auth;
+use App\Http\Requests\Request;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -62,6 +64,7 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
     protected $redirectPath = '/admin/list';
     protected $loginPath = '/auth/login';
 }

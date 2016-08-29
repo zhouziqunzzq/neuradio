@@ -33,7 +33,5 @@ Route::get('/apply', function () {
 Route::get('/show_apply','ApplyController@index');
 Route::post('/validate_apply','ApplyController@validateApply');
 Route::post('/save_apply','ApplyController@confirm');
+Route::get('/admin','ApplyController@adminLogin');
 Route::get('/admin/list','ApplyController@showApply');
-Route::get('/success',function () {
-    return view('apply.success');
-});
