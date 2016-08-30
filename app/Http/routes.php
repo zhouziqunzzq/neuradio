@@ -37,3 +37,4 @@ Route::get('/admin','ApplyController@adminLogin');
 Route::get('/admin/list','ApplyController@showApply');
 Route::get('/tmpphoto/{photoFile}','ApplyController@showTmpPhoto');
 Route::get('/photo/{photoFile}','ApplyController@showPhoto');
+Route::get('/admin/export/list','ApplyController@exportList');

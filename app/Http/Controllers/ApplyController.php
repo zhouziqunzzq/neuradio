@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Student;
 use Storage;
+use Excel;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -122,5 +123,37 @@ class ApplyController extends Controller
         $file = Storage::get('photos/'.$photoFile);
         return response($file, 200)
             ->header('Content-Type', Storage::mimeType('photos/'.$photoFile));
+    }
+
+    /*
+     * 导出申请列表全部数据
+     */
+    public function exportList(Request $request)
+    {
+        if(!Auth::check())
+            return view('errors.unauthorized');
+        $rows = Student::all();
+        Excel::create('申请列表',function($excel) use ($rows) {
+            $excel->sheet('申请列表',function($sheet) use ($rows) {
+                //导入数据
+                $sheet->fromArray($rows);
+                //设置表头
+                $sheet->row(1,array(
+                    '编号','姓名','Email','手机','学号','性别','第一志愿','第二志愿','第三志愿','第四志愿','创建日期',
+                    '最后更新日期'
+                ));
+                //设置列宽
+                $sheet->setWidth(array(
+                    'C'     =>  20,  //email
+                    'D'     =>  12,  //tel
+                    'G'     =>  12,  //applicant
+                    'H'     =>  12,
+                    'I'     =>  12,
+                    'J'     =>  12,
+                    'K'     =>  18,  //time
+                    'L'     =>  18,
+                ));
+            });
+        })->download('xls');
     }
 }

@@ -10,9 +10,13 @@
         <div class="text-center">
             <h1>申请列表</h1>
         </div>
-        <div class="text-right">
-            <a href="/auth/logout">注销</a>
+        <div class="row">
+            <div class="col-xs-4 col-xs-offset-8">
+                <a class="btn btn-primary" href="/admin/export/list" role="button">导出申请列表</a>
+                <a class="btn btn-warning" href="/auth/logout" role="button">注销</a>
+            </div>
         </div>
+        <br/>
         <div class="table-responsive">
             <table class="table table-bordered table-striped">
                 <tr>
