@@ -20,6 +20,12 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="campus" class="col-sm-2 control-label">校区</label>
+                <div class="col-sm-10">
+                    <input required readonly type="text" class="form-control" name="campus" id="campus" value="{{ old('campus') }}">
+                </div>
+            </div>
+            <div class="form-group">
                 <label for="inputTel" class="col-sm-2 control-label">手机</label>
                 <div class="col-sm-10">
                     <input required readonly type="text" class="form-control" name="inputTel" id="inputTel" placeholder="手机" value="{{ old('inputTel') }}">
@@ -65,12 +71,6 @@
                 <label for="applicant3" class="col-sm-2 control-label">第三志愿（可选）</label>
                 <div class="col-sm-10">
                     <input required readonly type="text" class="form-control" name="applicant3" id="applicant3" value="{{ old('applicant3') }}">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="applicant4" class="col-sm-2 control-label">第四志愿（可选）</label>
-                <div class="col-sm-10">
-                    <input required readonly type="text" class="form-control" name="applicant4" id="applicant4" value="{{ old('applicant4') }}">
                 </div>
             </div>
             <div class="form-group">

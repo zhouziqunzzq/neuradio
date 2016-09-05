@@ -29,6 +29,15 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="campus" class="col-sm-2 control-label">校区</label>
+                <div class="col-sm-10">
+                    <select required class="form-control" name="campus" id="campus">
+                        <option value="南湖校区">南湖校区</option>
+                        <option value="浑南校区">浑南校区</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
                 <label for="inputTel" class="col-sm-2 control-label">手机</label>
                 <div class="col-sm-10">
                     <input required type="text" class="form-control" name="inputTel" id="inputTel" placeholder="手机" value="{{ old('inputTel') }}">
@@ -73,7 +82,6 @@
                         <option value="播音">播音</option>
                         <option value="合成">合成</option>
                         <option value="采编">采编</option>
-                        <option value="策划">策划</option>
                     </select>
                 </div>
             </div>
@@ -85,7 +93,6 @@
                         <option value="播音">播音</option>
                         <option value="合成">合成</option>
                         <option value="采编">采编</option>
-                        <option value="策划">策划</option>
                     </select>
                 </div>
             </div>
@@ -97,19 +104,6 @@
                         <option value="播音">播音</option>
                         <option value="合成">合成</option>
                         <option value="采编">采编</option>
-                        <option value="策划">策划</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="applicant4" class="col-sm-2 control-label">第四志愿（可选）</label>
-                <div class="col-sm-10">
-                    <select class="form-control" name="applicant4" id="applicant4">
-                        <option value="无">无</option>
-                        <option value="播音">播音</option>
-                        <option value="合成">合成</option>
-                        <option value="采编">采编</option>
-                        <option value="策划">策划</option>
                     </select>
                 </div>
             </div>

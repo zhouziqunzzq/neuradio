@@ -23,12 +23,12 @@
                     <td>姓名</td>
                     <td>性别</td>
                     <td>学号</td>
+                    <td>校区</td>
                     <td>Email</td>
                     <td>手机</td>
                     <td>第一志愿</td>
                     <td>第二志愿</td>
                     <td>第三志愿</td>
-                    <td>第四志愿</td>
                     <td>照片</td>
                 </tr>
                 @foreach($students as $student)
@@ -40,12 +40,12 @@
                             <td>女</td>
                         @endif
                         <td>{{ $student->stunum }}</td>
+                        <td>{{ $student->campus }}</td>
                         <td>{{ $student->email }}</td>
                         <td>{{ $student->tel }}</td>
                         <td>{{ $student->applicant1 }}</td>
                         <td>{{ $student->applicant2 }}</td>
                         <td>{{ $student->applicant3 }}</td>
-                        <td>{{ $student->applicant4 }}</td>
                         <td><a href="/photo/{{ $student->stunum }}" target="_blank">查看照片</a> </td>
                     </tr>
                 @endforeach

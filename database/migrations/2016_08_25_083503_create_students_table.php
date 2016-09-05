@@ -19,10 +19,10 @@ class CreateStudentsTable extends Migration
             $table->string('tel'); //手机
             $table->string('stunum');  //学号
             $table->enum('gender',['Male','Female']);
-            $table->enum('applicant1',['播音','合成','采编','策划']);  //第1志愿，非空
-            $table->enum('applicant2',['无','播音','合成','采编','策划']);  //第2志愿
-            $table->enum('applicant3',['无','播音','合成','采编','策划']);  //第3志愿
-            $table->enum('applicant4',['无','播音','合成','采编','策划']);  //第4志愿
+            $table->enum('campus',['南湖校区','浑南校区']);  //校区
+            $table->enum('applicant1',['播音','合成','采编']);  //第1志愿，非空
+            $table->enum('applicant2',['无','播音','合成','采编']);  //第2志愿
+            $table->enum('applicant3',['无','播音','合成','采编']);  //第3志愿
             $table->timestamps();
         });
     }

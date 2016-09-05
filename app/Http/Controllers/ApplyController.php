@@ -30,6 +30,7 @@ class ApplyController extends Controller
         $this->validate($request, [
             'inputName' => 'required|max:255',
             'inputStunum' => 'required|digits_between:8,10',
+            'campus' => 'required',
             'inputTel' => 'required|digits:11',
             'inputEmail' => 'required|email',
             'photoFile' => 'required|image',
@@ -62,10 +63,10 @@ class ApplyController extends Controller
         $student->tel = $request->input('inputTel');
         $student->stunum = $request->input('inputStunum');
         $student->gender = $request->input('genderRadioOptions') == '男' ? 'Male' : 'Female';
+        $student->campus = $request->input('campus');
         $student->applicant1 = $request->input('applicant1');
         $student->applicant2 = $request->input('applicant2');
         $student->applicant3 = $request->input('applicant3');
-        $student->applicant4 = $request->input('applicant4');
         $student->save();
         //移动图片到永久文件夹
         Storage::move('tmp/'.$request->input('inputStunum'), 'photos/'.$request->input('inputStunum'));
