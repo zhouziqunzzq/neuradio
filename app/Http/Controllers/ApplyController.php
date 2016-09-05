@@ -74,12 +74,18 @@ class ApplyController extends Controller
     }
 
     /*
-     * 显示所有申请
+     * 显示申请
      */
-    public function showApply(Request $request)
+    public function showApply(Request $request, $campus)
     {
         if(Auth::check())
-            return response()->view('admin.list',['students' => Student::all()]);
+        {
+            if($campus == "all")
+                return response()->view('admin.list',['campus' => $campus, 'students' => Student::all()]);
+            else
+                return response()->view('admin.list',['campus' => $campus,
+                    'students' => Student::where('campus',$campus)->get()]);
+        }
         else
             return response()->view('errors.unauthorized');
     }
@@ -90,7 +96,7 @@ class ApplyController extends Controller
     public function adminLogin(Request $request)
     {
         if(Auth::check())
-            return redirect('/admin/list');
+            return response()->view('admin.index');
         else
             return redirect('/auth/login');
     }
@@ -129,26 +135,32 @@ class ApplyController extends Controller
     /*
      * 导出申请列表全部数据
      */
-    public function exportList(Request $request)
+    public function exportList(Request $request, $campus)
     {
         if(!Auth::check())
             return view('errors.unauthorized');
-        $rows = Student::all();
-        Excel::create('申请列表',function($excel) use ($rows) {
-            $excel->sheet('申请列表',function($sheet) use ($rows) {
+        $excelTitle = "申请列表";
+        if($campus == "all")
+            $rows = Student::all();
+        else
+        {
+            $rows = Student::where('campus',$campus)->get();
+            $excelTitle = $excelTitle."（".$campus."）";
+        }
+        Excel::create($excelTitle,function($excel) use ($rows, $excelTitle) {
+            $excel->sheet($excelTitle,function($sheet) use ($rows) {
                 //导入数据
                 $sheet->fromArray($rows);
                 //设置表头
                 $sheet->row(1,array(
-                    '编号','姓名','Email','手机','学号','性别','第一志愿','第二志愿','第三志愿','第四志愿','创建日期',
+                    '编号','姓名','Email','手机','学号','性别','校区','第一志愿','第二志愿','第三志愿','创建日期',
                     '最后更新日期'
                 ));
                 //设置列宽
                 $sheet->setWidth(array(
                     'C'     =>  20,  //email
                     'D'     =>  12,  //tel
-                    'G'     =>  12,  //applicant
-                    'H'     =>  12,
+                    'H'     =>  12,  //applicant
                     'I'     =>  12,
                     'J'     =>  12,
                     'K'     =>  18,  //time

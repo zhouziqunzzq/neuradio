@@ -12,8 +12,15 @@
         </div>
         <div class="row">
             <div class="col-xs-4 col-xs-offset-8">
-                <a class="btn btn-primary" href="/admin/export/list" role="button">导出申请列表</a>
-                <a class="btn btn-warning" href="/auth/logout" role="button">注销</a>
+                <a class="btn btn-primary" href="/admin/export/list/{{ $campus }}" role="button">导出
+                    @if ($campus == "all")
+                        全部
+                    @else
+                        {{ $campus }}
+                    @endif
+                    申请列表</a>
+                <a class="btn btn-warning" onclick="history.go(-1)" role="button">返回</a>
+                <a class="btn btn-danger" href="/auth/logout" role="button">注销</a>
             </div>
         </div>
         <br/>
