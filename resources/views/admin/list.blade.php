@@ -11,14 +11,23 @@
             <h1>申请列表</h1>
         </div>
         <div class="row">
-            <div class="col-xs-4 col-xs-offset-8">
+            <div class="col-md-8 col-xs-10 col-md-offset-4 col-xs-offset-2">
                 <a class="btn btn-primary" href="/admin/export/list/{{ $campus }}" role="button">导出
                     @if ($campus == "all")
                         全部
                     @else
                         {{ $campus }}
                     @endif
-                    申请列表</a>
+                    申请列表
+                </a>
+                <a class="btn btn-primary" href="/admin/export/photo/{{ $campus }}" role="button">导出
+                    @if ($campus == "all")
+                        全部
+                    @else
+                        {{ $campus }}
+                    @endif
+                    申请人照片
+                </a>
                 <a class="btn btn-warning" onclick="history.go(-1)" role="button">返回</a>
                 <a class="btn btn-danger" href="/auth/logout" role="button">注销</a>
             </div>

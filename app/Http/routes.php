@@ -38,3 +38,4 @@ Route::get('/admin/list/{campus}','ApplyController@showApply');
 Route::get('/tmpphoto/{photoFile}','ApplyController@showTmpPhoto');
 Route::get('/photo/{photoFile}','ApplyController@showPhoto');
 Route::get('/admin/export/list/{campus}','ApplyController@exportList');
+Route::get('/admin/export/photo/{campus}','ApplyController@exportPhoto');

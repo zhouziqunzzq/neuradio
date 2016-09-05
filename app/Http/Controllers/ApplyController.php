@@ -8,6 +8,7 @@ use Auth;
 use App\Student;
 use Storage;
 use Excel;
+use Chumper\Zipper\Zipper;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -168,5 +169,39 @@ class ApplyController extends Controller
                 ));
             });
         })->download('xls');
+    }
+
+    /*
+     * 导出照片并打包下载
+     */
+    public function exportPhoto(Request $request, $campus)
+    {
+        if(!Auth::check())
+            return view('errors.unauthorized');
+
+        $zipName = "申请人照片";
+        if($campus == "all")
+            $rows = Student::all();
+        else
+        {
+            $rows = Student::where('campus',$campus)->get();
+            $zipName = $zipName."（".$campus."）";
+        }
+        $zipName .= ".zip";
+
+        if(Storage::has('tmp/'.$zipName))
+            Storage::delete('tmp/'.$zipName);
+
+        $zipper = new Zipper();
+        $zipper->make('../storage/app/tmp/'.$zipName);
+        foreach($rows as $row)
+        {
+            $exts = explode('/',Storage::mimeType('photos/'.$row->stunum));
+            $ext = end($exts);
+            $zipper->addString($row->stunum.'.'.$ext,Storage::get('photos/'.$row->stunum));
+        }
+        $zipper->close();
+
+        return response()->download('../storage/app/tmp/'.$zipName);
     }
 }

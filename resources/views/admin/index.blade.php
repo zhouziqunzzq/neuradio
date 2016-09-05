@@ -7,9 +7,9 @@
         }
     </style>
     <div class="mycontainer container">
-        <div class="panel panel-default">
+        <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">东大之声网络招新后台管理</h3>
+                <h1 class="panel-title text-center">东大之声网络招新后台管理</h1>
             </div>
             <div class="panel-body">
                 <div class="text-center">
