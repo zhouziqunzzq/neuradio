@@ -1,5 +1,13 @@
 @extends('layouts.app')
-@section('title','查看所有申请')
+@section('title')
+    查看
+    @if ($campus == "all")
+        全部
+    @else
+        {{ $campus }}
+    @endif
+    申请列表
+@endsection
 @section('content')
     <style>
         .mycontainer{
@@ -8,7 +16,14 @@
     </style>
     <div class="mycontainer container">
         <div class="text-center">
-            <h1>申请列表</h1>
+            <h1>
+                @if ($campus == "all")
+                    全部
+                @else
+                    {{ $campus }}
+                @endif
+                申请列表
+            </h1>
         </div>
         <div class="row">
             <div class="col-md-8 col-xs-10 col-md-offset-4 col-xs-offset-2">
