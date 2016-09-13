@@ -8,8 +8,11 @@
             <div class="text-center">
                 <h1>关于我们</h1>
             </div>
+            <div class="visible-xs text-center">
+                <small style="color:#0000C2">提示：长按图片以查看详情...</small>
+            </div>
             <div class="main row">
-                <div class="view view-first  col-md-3">
+                <div class="view view-first col-xs-3">
                     <img src="{{ URL::asset('img/icon.png') }}" />
                     <div class="mask">
                         <h2>东大之声简介</h2>
@@ -19,7 +22,7 @@
                         <a href="/show/1" class="info">更多</a>
                     </div>
                 </div>
-                <div class="view view-first col-md-3">
+                <div class="view view-first col-xs-3">
                     <img src="{{ URL::asset('img/boyin.jpg') }}" />
                     <div class="mask">
                         <h2>播音部</h2>
@@ -27,7 +30,7 @@
                         <a href="/show/2" class="info">更多</a>
                     </div>
                 </div>
-                <div class="view view-first  col-md-3">
+                <div class="view view-first  col-xs-3">
                     <img src="{{ URL::asset('img/hecheng.jpg') }}" />
                     <div class="mask">
                         <h2>合成部</h2>
@@ -35,7 +38,7 @@
                         <a href="/show/3" class="info">更多</a>
                     </div>
                 </div>
-                <div class="view view-first  col-md-3">
+                <div class="view view-first  col-xs-3">
                     <img src="{{ URL::asset('img/caibian.jpg') }}" />
                     <div class="mask">
                         <h2>采编部</h2>
