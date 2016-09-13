@@ -16,6 +16,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/show', function () {
+    return view('show.index');
+});
+Route::get('/show/{id}', function ($id) {
+    return view('show.'.$id);
+});
 
 // 认证路由...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
