@@ -5,6 +5,7 @@
         .mycontainer{
             background-image: url({{ URL::asset('img/3.png') }});
             background-size: 100%;
+            background-repeat: no-repeat;
         }
     </style>
     <div class="container mycontainer">
