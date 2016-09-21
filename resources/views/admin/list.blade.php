@@ -24,6 +24,7 @@
                 @endif
                 申请列表
             </h1>
+            <h4>总计{{ $count }}人</h4>
         </div>
         <div class="row">
             <div class="col-md-8 col-xs-10 col-md-offset-4 col-xs-offset-2">

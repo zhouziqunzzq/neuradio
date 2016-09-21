@@ -82,10 +82,12 @@ class ApplyController extends Controller
         if(Auth::check())
         {
             if($campus == "all")
-                return response()->view('admin.list',['campus' => $campus, 'students' => Student::all()]);
+                return response()->view('admin.list',['campus' => $campus, 'students' => Student::all(),
+                    'count' => Student::all()->count()]);
             else
                 return response()->view('admin.list',['campus' => $campus,
-                    'students' => Student::where('campus',$campus)->get()]);
+                    'students' => Student::where('campus',$campus)->get(),
+                    'count'=>Student::where('campus',$campus)->count()]);
         }
         else
             return response()->view('errors.unauthorized');
@@ -134,7 +136,7 @@ class ApplyController extends Controller
     }
 
     /*
-     * 导出申请列表全部数据
+     * 导出申请列表指定校区的数据
      */
     public function exportList(Request $request, $campus)
     {
